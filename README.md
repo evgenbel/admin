@@ -30,7 +30,7 @@ It includes:
 
 		"sleeping-owl/admin": "dev-development"
 		
-if you need sentinel version then add reposiatries in your composer.json
+if you need sentinel version then add repositories in your composer.json
 
 		 "repositories": [{
 			"url"   :   "https://github.com/evgenbel/admin.git",
@@ -40,6 +40,8 @@ if you need sentinel version then add reposiatries in your composer.json
 and require
 
 		"sleeping-owl/admin"    :   "dev-sentinel-laravel-5.3"
+		
+and run composer update
 
  2. After composer update, add service providers to the `config/app.php`
 
