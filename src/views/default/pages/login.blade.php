@@ -12,9 +12,9 @@
                     	<form action="{{ $loginPostUrl }}" method="post">
                     		<input type="hidden" name="_token" value="{{ csrf_token() }}" />
                             <fieldset>
-                                <div class="form-group <?=($errors->has('username')) ? 'has-error' : ''?>">
-                                    {!! $errors->first('username', '<label for="username" class="control-label">:message</label>') !!}
-                                    <input type="text" name="username" id="username" class="form-control" placeholder="{{ trans('admin::lang.auth.username') }}" autofocus />
+                                <div class="form-group <?=($errors->has('email')) ? 'has-error' : ''?>">
+                                    {!! $errors->first('email', '<label for="username" class="control-label">:message</label>') !!}
+                                    <input type="text" name="email" id="username" class="form-control" placeholder="{{ trans('admin::lang.auth.username') }}" autofocus />
                                 </div>
                                 <div class="form-group <?=($errors->has('password')) ? 'has-error' : ''?>">
                                     {!! $errors->first('password', '<label for="password" class="control-label">:message</label>') !!}

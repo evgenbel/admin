@@ -1,7 +1,10 @@
 <?php namespace SleepingOwl\Admin\Http\Middleware;
 
-use AdminAuth;
 use Closure;
+use Sentinel;
+use Redirect;
+use SleepingOwl\Admin\Admin;
+use Request;
 
 class Authenticate
 {
@@ -15,6 +18,10 @@ class Authenticate
 	 */
 	public function handle($request, Closure $next)
 	{
+        if (Sentinel::guest()) return redirect(route('admin.login'));
+        if(Sentinel::inRole('admin')) return $next($request);
+        return Redirect::back();
+        /*
 		if (AdminAuth::guest())
 		{
 			if ($request->ajax())
@@ -26,7 +33,7 @@ class Authenticate
 			}
 		}
 
-		return $next($request);
+		return $next($request);*/
 	}
 
 }

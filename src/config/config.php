@@ -32,9 +32,10 @@ return [
 	 * Authentication config
 	 */
 	'auth'                    => [
-		'model' => '\SleepingOwl\AdminAuth\Entities\Administrator',
+		'model' => '\SleepingOwl\AdminAuth\Entities\User',
+//		'model' => '\SleepingOwl\AdminAuth\Entities\Administrator',
 		'rules' => [
-			'username' => 'required',
+			'email' => 'required|email',
 			'password' => 'required',
 		]
 	],

@@ -5,9 +5,17 @@ use App;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\MessageBag;
 use Request;
-use Redirect;
 use SleepingOwl\AdminAuth\Facades\AdminAuth;
+use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
+use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
+use Redirect;
+use Sentinel;
+use Activation;
+use Reminder;
 use Validator;
+use Mail;
+use Storage;
+use CurlHttp;
 
 class AuthController extends Controller
 {
@@ -19,7 +27,7 @@ class AuthController extends Controller
 
 	public function getLogin()
 	{
-		if ( ! AdminAuth::guest())
+		if ( ! Sentinel::guest())
 		{
 			return $this->redirect();
 		}
@@ -45,7 +53,7 @@ class AuthController extends Controller
 			return Redirect::back()->withInput()->withErrors($validator);
 		}
 
-		if (AdminAuth::attempt($data))
+		if (Sentinel::authenticate($data))
 		{
 			return Redirect::intended(route('admin.wildcard', '/'));
 		}
@@ -59,7 +67,7 @@ class AuthController extends Controller
 
 	public function getLogout()
 	{
-		AdminAuth::logout();
+        Sentinel::logout();
 		return $this->redirect();
 	}
 
