@@ -13,7 +13,7 @@ class CreatePivotPermitRole extends Migration
      */
     public function up()
     {
-        Schema::create('premite_role', function (Blueprint $table) {
+        Schema::create('permit_role', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('permit_id');
             $table->integer('role_id');

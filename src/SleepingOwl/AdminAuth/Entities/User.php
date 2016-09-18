@@ -24,7 +24,7 @@ class User extends EloquentUser
         'password', 'remember_token',
     ];
 
-    protected static $rolesModel = 'Role';
+    protected static $rolesModel = 'SleepingOwl\AdminAuth\Entities\Role';
 
     public function setRolesAttribute($roles)
     {
