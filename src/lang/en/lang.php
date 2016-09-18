@@ -11,6 +11,20 @@ return [
 		'wrong-username' => 'Wrong username',
 		'wrong-password' => 'or password'
 	],
+    'menu'  =>[
+        'start_page'    =>  'Start page',
+        'users'         =>  'Users',
+        'user'          =>  'User',
+        'permissions'    =>  'Permissions',
+        'roles'         =>  'Roles',
+    ],
+    'fields'    =>  [
+        'name'  =>  'Name',
+        'password'  =>  'Password',
+        'firstname'  =>  'First Name',
+        'lastname'  =>  'Last Name',
+        'slug'  =>  'Slug',
+    ],
     'permission'    =>  [
         'wrong-delete'  =>  'You need permission <b>:permit</b> for delete this object. For get this permission contact administrator.',
         'wrong'  =>  'You need permission <b>:permit</b> for this action with the object. For get this permission contact administrator.',

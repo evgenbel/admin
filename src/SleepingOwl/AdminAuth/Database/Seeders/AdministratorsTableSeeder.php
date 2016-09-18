@@ -3,6 +3,7 @@
 use Hash;
 use Illuminate\Database\Seeder;
 use SleepingOwl\AdminAuth\Entities\Administrator;
+use Sentinel;
 
 class AdministratorsTableSeeder extends Seeder
 {

@@ -1,10 +1,10 @@
 <?php
 
-Admin::menu()->url('/')->label('Start page')->icon('fa-dashboard');
+Admin::menu()->url('/')->label(trans('admin::lang.menu.start_page'))->icon('fa-dashboard');
 
-Admin::menu()->label('Users')->icon('fa-users')->items(function ()
+Admin::menu()->label(trans('admin::lang.menu.users'))->icon('fa-users')->items(function ()
 {
-    Admin::menu(SleepingOwl\AdminAuth\Entities\Permit::class)->label('Permissions')->icon('fa-key');
-    Admin::menu(SleepingOwl\AdminAuth\Entities\Role::class)->label('Roles')->icon('fa-graduation-cap');
-    Admin::menu(SleepingOwl\AdminAuth\Entities\User::class)->label('Users')->icon('fa-user');
+    Admin::menu(SleepingOwl\AdminAuth\Entities\Permit::class)->label(trans('admin::lang.menu.permissions'))->icon('fa-key');
+    Admin::menu(SleepingOwl\AdminAuth\Entities\Role::class)->label(trans('admin::lang.menu.roles'))->icon('fa-graduation-cap');
+    Admin::menu(SleepingOwl\AdminAuth\Entities\User::class)->label(trans('admin::lang.menu.users'))->icon('fa-user');
 });

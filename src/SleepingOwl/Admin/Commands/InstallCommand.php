@@ -36,6 +36,8 @@ class InstallCommand extends Command
 		$this->createBootstrapFile();
 		$this->createRoutesFile();
 		$this->createDummyUserFile();
+		$this->createDummyRoleFile();
+		$this->createDummyPermitFile();
 
 		$this->createPublicDefaultStructure();
 	}
@@ -121,6 +123,34 @@ class InstallCommand extends Command
 			$this->line('<info>Dummy user file was created:</info> ' . str_replace(base_path(), '', $file));
 		}
 	}
+
+    /**
+     * Create dummy user file
+     */
+    protected function createDummyRoleFile()
+    {
+        $file = config('admin.bootstrapDirectory') . '/Role.php';
+        if ( ! file_exists($file))
+        {
+            $contents = $this->laravel['files']->get(__DIR__ . '/stubs/Role.stub');
+            $this->laravel['files']->put($file, $contents);
+            $this->line('<info>Dummy user file was created:</info> ' . str_replace(base_path(), '', $file));
+        }
+    }
+
+    /**
+     * Create dummy user file
+     */
+    protected function createDummyPermitFile()
+    {
+        $file = config('admin.bootstrapDirectory') . '/Permit.php';
+        if ( ! file_exists($file))
+        {
+            $contents = $this->laravel['files']->get(__DIR__ . '/stubs/Permit.stub');
+            $this->laravel['files']->put($file, $contents);
+            $this->line('<info>Dummy user file was created:</info> ' . str_replace(base_path(), '', $file));
+        }
+    }
 
 	/**
 	 * Create public default structure

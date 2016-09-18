@@ -5,24 +5,25 @@
  * For full list see documentation.
  */
 
-Admin::model('SleepingOwl\AdminAuth\Entities\User')->title('Users')->display(function ()
+Admin::model('SleepingOwl\AdminAuth\Entities\User')->title(trans('admin::lang.menu.users'))->display(function ()
 {
-	$display = AdminDisplay::table();
-	$display->columns([
-		Column::string('first_name')->label('Name'),
-		Column::string('email')->label('Email'),
-	]);
-	return $display;
+    $display = AdminDisplay::table();
+    $display->columns([
+        Column::string('first_name')->label(trans('admin::lang.fields.firstname')),
+        Column::string('last_name')->label(trans('admin::lang.fields.lastname')),
+        Column::string('email')->label('Email'),
+    ]);
+    return $display;
 })->createAndEdit(function ()
 {
-	$form = AdminForm::form();
+    $form = AdminForm::form();
     $form->items([
         FormItem::text('email', 'Email'),
-        FormItem::password('password', 'Password'),
+        FormItem::password('password', trans('admin::lang.fields.password')),
         FormItem::timestamp('last_login', 'Last Login')->format('d.m.Y'),//->seconds(true),
-        FormItem::text('first_name', 'First Name'),
-        FormItem::text('last_name', 'Last Name'),
-        FormItem::multiselect('roles', 'Роли')->model('SleepingOwl\AdminAuth\Entities\Role')->display('name'),
+        FormItem::text('first_name', trans('admin::lang.fields.firstname')),
+        FormItem::text('last_name', trans('admin::lang.fields.lastname')),
+        FormItem::multiselect('roles', trans('admin::lang.menu.roles'))->model('SleepingOwl\AdminAuth\Entities\Role')->display('name'),
     ]);
-	return $form;
+    return $form;
 });

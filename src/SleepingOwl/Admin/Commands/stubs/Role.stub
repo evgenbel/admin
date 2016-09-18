@@ -5,7 +5,7 @@
  * For full list see documentation.
  */
 
-Admin::model('SleepingOwl\AdminAuth\Entities\Role')->title('Roles')->display(function ()
+Admin::model('SleepingOwl\AdminAuth\Entities\Role')->title(trans('admin::lang.menu.roles'))->display(function ()
 {
 	$display = AdminDisplay::datatables();
     $display->with();
@@ -13,8 +13,8 @@ Admin::model('SleepingOwl\AdminAuth\Entities\Role')->title('Roles')->display(fun
 
     ]);
 	$display->columns([
-		Column::string('name')->label('Name'),
-		Column::string('slug')->label('Slug'),
+		Column::string('name')->label(trans('admin::lang.fields.name')),
+		Column::string('slug')->label(trans('admin::lang.fields.slug')),
 	]);
 	return $display;
 })->createAndEdit(function ($id)
@@ -22,15 +22,15 @@ Admin::model('SleepingOwl\AdminAuth\Entities\Role')->title('Roles')->display(fun
 	$form = AdminForm::form();
     if ( in_array($id, [1,2,3])) {
         $form->items([
-            FormItem::text('name', 'Role name'),
-            FormItem::text('slug', 'Role')->readonly(),
-            FormItem::multiselect('permits', 'Permissions')->model('SleepingOwl\AdminAuth\Entities\Permit')->display('name'),
+            FormItem::text('name', trans('admin::lang.fields.name')),
+            FormItem::text('slug', trans('admin::lang.fields.slug'))->readonly(),
+            FormItem::multiselect('permits', trans('admin::lang.menu.permissions'))->model('SleepingOwl\AdminAuth\Entities\Permit')->display('name'),
         ]);
     }else {
         $form->items([
-            FormItem::text('name', 'Role name'),
-            FormItem::text('slug', 'Role'),
-            FormItem::multiselect('permits', 'Permissions')->model('SleepingOwl\AdminAuth\Entities\Permit')->display('name'),
+            FormItem::text('name', trans('admin::lang.fields.name')),
+            FormItem::text('slug', trans('admin::lang.fields.slug')),
+            FormItem::multiselect('permits', trans('admin::lang.menu.permissions'))->model('SleepingOwl\AdminAuth\Entities\Permit')->display('name'),
         ]);
     }
 	return $form;
