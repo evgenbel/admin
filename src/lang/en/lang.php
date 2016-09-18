@@ -11,6 +11,11 @@ return [
 		'wrong-username' => 'Wrong username',
 		'wrong-password' => 'or password'
 	],
+    'permission'    =>  [
+        'wrong-delete'  =>  'You need permission <b>:permit</b> for delete this object. For get this permission contact administrator.',
+        'wrong'  =>  'You need permission <b>:permit</b> for this action with the object. For get this permission contact administrator.',
+        'deny'  =>  'Unauthorized access',
+    ],
 	'ckeditor' => [
 		'upload'        => [
 			'success' => 'File was uploaded: \\n- Size: :size kb \\n- width/height: :width x :height',

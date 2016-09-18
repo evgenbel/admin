@@ -1,0 +1,38 @@
+<?php
+
+/*
+ * This is a simple example of the main features.
+ * For full list see documentation.
+ */
+
+Admin::model('SleepingOwl\AdminAuth\Entities\Role')->title('Roles')->display(function ()
+{
+	$display = AdminDisplay::datatables();
+    $display->with();
+    $display->filters([
+
+    ]);
+	$display->columns([
+		Column::string('name')->label('Name'),
+		Column::string('slug')->label('Slug'),
+	]);
+	return $display;
+})->createAndEdit(function ($id)
+{
+	$form = AdminForm::form();
+    if ( in_array($id, [1,2,3])) {
+        $form->items([
+            FormItem::text('name', 'Role name'),
+            FormItem::text('slug', 'Role')->readonly(),
+            FormItem::multiselect('permits', 'Permissions')->model('SleepingOwl\AdminAuth\Entities\Permit')->display('name'),
+        ]);
+    }else {
+        $form->items([
+            FormItem::text('name', 'Role name'),
+            FormItem::text('slug', 'Role'),
+            FormItem::multiselect('permits', 'Permissions')->model('SleepingOwl\AdminAuth\Entities\Permit')->display('name'),
+        ]);
+    }
+	return $form;
+})
+    ->delete(function ($id) { if ( in_array($id, [1,2,3])) return null; else return 1; });;

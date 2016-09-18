@@ -31,7 +31,7 @@ class AdministratorsTableSeeder extends Seeder
         ];
         $adminUser = Sentinel::registerAndActivate($admin);
         $role = [
-            'name' => 'Администратор',
+            'name' => 'Administrator',
             'slug' => 'admin',
             'permissions' => [
                 'admin' => true,
@@ -40,12 +40,12 @@ class AdministratorsTableSeeder extends Seeder
         $adminRole = Sentinel::getRoleRepository()->createModel()->fill($role)->save();
         $adminUser->roles()->attach($adminRole);
         $role = [
-            'name' => 'Пользователь',
+            'name' => 'User',
             'slug' => 'user',
         ];
         $userRole = Sentinel::getRoleRepository()->createModel()->fill($role)->save();
         $role = [
-            'name' => 'Забанен',
+            'name' => 'Banned',
             'slug' => 'banned',
         ];
         $banRole = Sentinel::getRoleRepository()->createModel()->fill($role)->save();
