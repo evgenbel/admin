@@ -29,6 +29,17 @@ It includes:
  1. Require this package in your composer.json and run composer update:
 
 		"sleeping-owl/admin": "dev-development"
+		
+if you need sentinel version then add reposiatries in your composer.json
+
+		 "repositories": [{
+			"url"   :   "https://github.com/evgenbel/admin.git",
+			"type"  :   "git"
+		}],
+		
+and require
+
+		"sleeping-owl/admin"    :   "dev-sentinel-laravel-5.3"
 
  2. After composer update, add service providers to the `config/app.php`
 
